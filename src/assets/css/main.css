@@ -1,0 +1,291 @@
+:root {
+    --primary-color: #5d5a58;
+    --primary-color-50: #5d5a5886;
+    --secondary-color: #ffffff;
+    --disabled-color: #e1e1e1;
+    --disabled-border-color: #adadad;
+    --hover-color: #e5f1fb;
+    --hover-border-color: #0078d7;
+    --pure-background: #f0f0f0;
+    --red-error: #ad4444;
+}
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none;
+}
+
+img {
+    user-select: none;
+}
+
+html {
+    font-size: 100%;
+}
+
+body {
+    background: var(--pure-background);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#loading {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* background: var(--pure-background); */
+    z-index: 999;
+    backdrop-filter: blur(15px);
+}
+
+#loading .circle {
+    width: 50%;
+    height: 50%;
+    filter: invert(100%) sepia(99%) saturate(2%) hue-rotate(121deg) brightness(104%) contrast(101%);
+    opacity: .5;
+    animation: spin 1000ms linear infinite;
+}
+
+.reload {
+    width: 100px;
+    background: var(--primary-color-50);
+    color: var(--secondary-color);
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    z-index: 9;
+    left: 50%;
+    transform: translateX(-50%);
+    position: fixed;
+    top: 0;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-top: 10px;
+    transition: background .3s ease-in-out, display .5s ease-in-out;
+}
+
+.reload:hover {
+    background: var(--primary-color);
+}
+
+.reload .reloadicon {
+    filter: invert(100%) sepia(99%) saturate(2%) hue-rotate(121deg) brightness(104%) contrast(101%);
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+}
+
+.reload:hover .reloadicon {
+    animation: spin 1000ms linear infinite;
+}
+
+.reload .reloadtitle {
+    font-size: 16px;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+#weather {
+    /* background: var(--secondary-color); */
+    width: 500px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+    backdrop-filter: blur(30px) opacity(0.9);
+}
+
+body.day {
+    background: url('../img/day.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: var(--primary-color);
+}
+
+body.night {
+    background: url('../img/night.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: var(--secondary-color);
+}
+
+#error {
+    color: var(--red-error);
+    font-size: 12px;
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: var(--pure-background);
+    z-index: 99;
+}
+
+#error .title {
+    font-size: 24px;
+    color: var(--primary-color);
+}
+
+#error .errcontent {
+    width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    min-height: calc(100%-30px);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    font-size: 14px;
+}
+
+#error .errcontent *::before {
+    content: '-';
+    margin-right: 5px;
+}
+
+#error #hideme {
+    margin-top: auto;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--primary-color);
+    background: var(--disabled-color);
+    border: 1px solid var(--disabled-border-color);
+    padding: 5px;
+    width: 128px;
+    height: 30px;
+    text-align: center;
+}
+
+#error #hideme:hover {
+    background: var(--hover-color);
+    border: 1px solid var(--hover-border-color);
+}
+
+#weather .main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#weather .main .datetime {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+#weather .main .weather {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#weather .main .weather .current {
+    font-size: 100px;
+}
+
+#weather .main .weather .weatherinfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#weather .main .weather .weatherinfo .icon {
+    width: 64px;
+    height: 64px;
+}
+
+#weather .main .weather .weatherinfo .status {
+    font-size: 32px;
+}
+
+#weather .additional {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+    margin-bottom: 5px;
+}
+
+#weather .additional .group {
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    background: var(--primary-color-50);
+    color: var(--secondary-color);
+    cursor: pointer;
+    opacity: .8;
+}
+
+#weather .additional .group:hover {
+    background: var(--primary-color);
+    opacity: 1;
+}
+
+#weather .additional .group:not(:first-child) {
+    margin-top: 5px;
+}
+
+#weather .additional .group .icon {
+    width: 32px;
+    height: 32px;
+    filter: invert(100%) sepia(99%) saturate(2%) hue-rotate(121deg) brightness(104%) contrast(101%);
+    opacity: .5;
+    margin-right: 5px;
+}
+
+#weather .additional .group .title {
+    font-size: 16px;
+}
+
+#weather .additional .group .value {
+    margin-left: auto;
+    margin-right: 10px;
+}

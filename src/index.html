@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="shortcut icon" href="assets/img/weather.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body>
+    <div id="loading">
+        <img src="assets/img/icons/reload.svg" alt="circling around and around and around" class="circle">
+    </div>
+    <div id="reload" class="reload">
+        <img src="assets/img/icons/reload.svg" srcset="assets/img/icons/reload.svg" alt="reload" class="reloadicon">
+        <span class="reloadtitle">Reload</span>
+    </div>
+    <div id="weather">
+        <div class="main">
+            <div class="datetime">
+                <span id="timelabel" class="time"></span>
+                <span id="currentlocation"></span>
+                <span id="datelabel" class="date"></span>
+            </div>
+            <div class="weather">
+                <span id="weather_current" class="current">0</span>
+                <div class="weatherinfo">
+                    <img id="weather_icon" src="https://cdn.weatherapi.com/weather/64x64/night/113.png" alt="" class="icon">
+                    <span id="weather_value" class="status">chilly</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="additional">
+            <div class="group">
+                <img src="assets/img/icons/temperature.svg" class="icon"></img>
+                <span class="title">Temperature</span>
+                <span id="temp_value" class="value">0/0</span>
+            </div>
+            <div class="group">
+                <img src="assets/img/icons/wind.svg" class="icon"></img>
+                <span class="title">Wind Speed</span>
+                <span id="wind_value" class="value">0</span>
+            </div>
+
+            <div class="group">
+                <img src="assets/img/icons/wind.svg" class="icon"></img>
+                <span class="title">Wind Degree / Direction</span>
+                <span id="windsecond_value" class="value">0/0</span>
+            </div>
+
+            <div class="group">
+                <img src="assets/img/icons/humidity.svg" class="icon"></img>
+                <span class="title">Humidity</span>
+                <span id="humid_value" class="value">0</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="error">
+        <span class="title">Console</span>
+        <div id="errorlog" class="errcontent">
+        </div>
+        <a id="hideme">Click to Hide</a>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
